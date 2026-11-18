@@ -374,6 +374,11 @@ a {
   resize: vertical;
 }
 
+.select-input {
+  cursor: pointer;
+  padding-right: 36px;
+}
+
 .radio-group {
   display: flex;
   flex-wrap: wrap;
@@ -728,7 +733,9 @@ a {
 }
 
 .bar-label {
-  width: 170px;
+  width: 240px;
+  max-width: 45%;
+  line-height: 1.35;
   font-size: 0.86rem;
   font-weight: 600;
   flex-shrink: 0;

@@ -270,6 +270,15 @@ function buildYorubaReportSheet(ss) {
   row += 1;
 
   const demoSpecs = [
+    { key: "A1", label: "A1: Ẹ̀ka", cats: ["Ẹ̀ka Iṣẹ́-Ọ̀nà", "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́"] },
+    {
+      key: "A2",
+      label: "A2: Ẹ̀ka Ẹ̀kọ́",
+      cats: [
+        "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+        "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ"
+      ]
+    },
     { key: "A3", label: "A3: Iṣẹ́ Rẹ (Ipò)", cats: ["Akẹ́kọ̀ọ́", "Olùkọ́"] },
     { key: "A4", label: "A4: Ìpele Ẹ̀kọ́", cats: ["100", "200", "300", "400", "Kò Kàn Mí (Olùkọ́)"] },
     { key: "A5", label: "A5: Ọjọ́ Orí", cats: ["16 – 20", "21 – 25", "26 – 30", "31+"] },
@@ -472,11 +481,41 @@ function normalizeLikert(val) {
   return String(val || "").trim();
 }
 
+function normalizeFaculty(val) {
+  const s = String(val || "").trim().toLowerCase();
+  if (s === "arts" || s === "faculty of arts" || s === "ẹ̀ka iṣẹ́-ọ̀nà") {
+    return "Ẹ̀ka Iṣẹ́-Ọ̀nà";
+  }
+  if (s === "education" || s === "faculty of education" || s === "ẹ̀ka ìmọ̀ ẹ̀kọ́") {
+    return "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́";
+  }
+  return String(val || "").trim();
+}
+
+function normalizeDepartment(val) {
+  const s = String(val || "").trim().toLowerCase();
+  if (
+    s === "linguistics and african languages" ||
+    s === "department of linguistics and african languages" ||
+    s === "ẹ̀ka ẹ̀kọ́ ìmọ̀ èdè àti àwọn èdè ilẹ̀ adúláwọ̀"
+  ) {
+    return "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀";
+  }
+  if (
+    s === "arts and social sciences education" ||
+    s === "department of arts and social sciences education" ||
+    s === "ẹ̀ka ẹ̀kọ́ iṣẹ́-ọ̀nà àti ìmọ̀ ẹ̀kọ́ àwùjọ"
+  ) {
+    return "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ";
+  }
+  return String(val || "").trim();
+}
+
 function sanitizeRowPayload(payload) {
   const roleYo = normalizeRole(payload.A3);
   const clean = {
-    A1: String(payload.A1 || "").trim(),
-    A2: String(payload.A2 || "").trim(),
+    A1: normalizeFaculty(payload.A1),
+    A2: normalizeDepartment(payload.A2),
     A3: roleYo,
     A4: normalizeLevel(payload.A4, roleYo),
     A5: normalizeAge(payload.A5),
@@ -684,6 +723,15 @@ function generateYorubaDocReport() {
   body.appendParagraph("ÌPÍN A: ÀTÒJỌ FÁYẸ̀WÒ NÍPA ARA ẸNI")
     .setHeading(DocumentApp.ParagraphHeading.HEADING2);
   const demoGroups = [
+    { key: "A1", title: "Ẹ̀ka", cats: ["Ẹ̀ka Iṣẹ́-Ọ̀nà", "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́"] },
+    {
+      key: "A2",
+      title: "Ẹ̀ka Ẹ̀kọ́",
+      cats: [
+        "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+        "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ"
+      ]
+    },
     { key: "A3", title: "Iṣẹ́ Rẹ (Ipò)", cats: ["Akẹ́kọ̀ọ́", "Olùkọ́"] },
     { key: "A4", title: "Ìpele Ẹ̀kọ́", cats: ["100", "200", "300", "400", "Kò Kàn Mí (Olùkọ́)"] },
     { key: "A5", title: "Ọjọ́ Orí", cats: ["16 – 20", "21 – 25", "26 – 30", "31+"] },

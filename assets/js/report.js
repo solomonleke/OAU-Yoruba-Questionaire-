@@ -171,6 +171,19 @@
       "</div>";
 
     const demoConfigs = [
+      {
+        title: "A1: Ẹ̀ka",
+        id: "A1",
+        cats: ["Ẹ̀ka Iṣẹ́-Ọ̀nà", "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́"]
+      },
+      {
+        title: "A2: Ẹ̀ka Ẹ̀kọ́",
+        id: "A2",
+        cats: [
+          "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+          "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ"
+        ]
+      },
       { title: "A3: Iṣẹ́ Rẹ (Ipò)", id: "A3", cats: ["Akẹ́kọ̀ọ́", "Olùkọ́"] },
       {
         title: "A4: Ìpele Ẹ̀kọ́",
@@ -442,6 +455,19 @@
 
     out.push(["ÌPÍN A: ÀTÒJỌ FÁYẸ̀WÒ NÍPA ARA ẸNI", "Ìsọ̀rí", "Iye", "Ìdá (%)"]);
     const demoFields = [
+      {
+        label: "Ẹ̀ka",
+        id: "A1",
+        cats: ["Ẹ̀ka Iṣẹ́-Ọ̀nà", "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́"]
+      },
+      {
+        label: "Ẹ̀ka Ẹ̀kọ́",
+        id: "A2",
+        cats: [
+          "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+          "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ"
+        ]
+      },
       { label: "Iṣẹ́ Rẹ (Ipò)", id: "A3", cats: ["Akẹ́kọ̀ọ́", "Olùkọ́"] },
       {
         label: "Ìpele Ẹ̀kọ́",
@@ -546,16 +572,21 @@
     const levels = ["100", "200", "300", "400"];
     const ages = ["16 – 20", "21 – 25", "26 – 30", "31+"];
     const genders = ["Akọ", "Abo"];
-    const depts = ["Ẹ̀ka Ẹ̀kọ́ Èdè Yorùbá", "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà", "Ẹ̀ka Ìmọ̀ Èdè"];
+    const faculties = ["Ẹ̀ka Iṣẹ́-Ọ̀nà", "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́"];
+    const depts = [
+      "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+      "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ"
+    ];
 
     const sample = [];
     for (let i = 0; i < 12; i++) {
       const role = roles[i % roles.length];
+      const pairIdx = i % 2;
       const row = {
         id: "ÀPẸẸRẸ-" + String(i + 1).padStart(3, "0"),
         timestamp: "2026-11-18 14:" + String(10 + i).padStart(2, "0") + ":00",
-        A1: "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà",
-        A2: depts[i % depts.length],
+        A1: faculties[pairIdx],
+        A2: depts[pairIdx],
         A3: role,
         A4: role === "Olùkọ́" ? "Kò Kàn Mí (Olùkọ́)" : levels[i % levels.length],
         A5: role === "Olùkọ́" ? "31+" : ages[i % 3],

@@ -217,6 +217,47 @@
             '" placeholder="' +
             escapeHtml(placeholder) +
             '" autocomplete="off">';
+        } else if (item.type === "select") {
+          const val = answers[item.id] || "";
+          const placeholder =
+            currentLang === "en"
+              ? item.placeholder.en
+              : currentLang === "bi"
+              ? item.placeholder.yo + " / " + item.placeholder.en
+              : item.placeholder.yo;
+          const optsHtml = item.options
+            .map((opt) => {
+              const selected = val === opt.value;
+              const optLabel =
+                currentLang === "en"
+                  ? opt.labelEn
+                  : currentLang === "bi"
+                  ? opt.labelYo === opt.labelEn
+                    ? opt.labelYo
+                    : opt.labelYo + " (" + opt.labelEn + ")"
+                  : opt.labelYo;
+              return (
+                '<option value="' +
+                escapeHtml(opt.value) +
+                '" ' +
+                (selected ? "selected" : "") +
+                ">" +
+                escapeHtml(optLabel) +
+                "</option>"
+              );
+            })
+            .join("");
+          inputHtml =
+            '<select class="text-input select-input" id="field_' +
+            item.id +
+            '" data-qid="' +
+            item.id +
+            '">' +
+            '<option value="">' +
+            escapeHtml(placeholder) +
+            "</option>" +
+            optsHtml +
+            "</select>";
         } else if (item.type === "radio") {
           const pills = item.options
             .map((opt) => {
@@ -502,7 +543,7 @@
     const target = e.target;
     if (!target) return;
 
-    if (target.matches("input[type='text'], textarea")) {
+    if (target.matches("input[type='text'], textarea, select")) {
       const qid = target.getAttribute("data-qid");
       if (qid) {
         answers[qid] = target.value;

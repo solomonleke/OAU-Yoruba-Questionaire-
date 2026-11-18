@@ -109,30 +109,54 @@ window.QUESTIONNAIRE_DATA = {
       {
         id: "A1",
         number: 1,
-        type: "text",
+        type: "select",
         required: true,
         label: {
           yo: "Ẹ̀ka",
           en: "Faculty"
         },
         placeholder: {
-          yo: "Àpẹẹrẹ: Ẹ̀ka Iṣẹ́-Ọ̀nà / Ẹ̀kọ́",
-          en: "e.g. Faculty of Arts / Education"
-        }
+          yo: "-- Yan Ẹ̀ka --",
+          en: "-- Select Faculty --"
+        },
+        options: [
+          {
+            value: "Ẹ̀ka Iṣẹ́-Ọ̀nà",
+            labelYo: "Ẹ̀ka Iṣẹ́-Ọ̀nà",
+            labelEn: "Arts"
+          },
+          {
+            value: "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́",
+            labelYo: "Ẹ̀ka Ìmọ̀ Ẹ̀kọ́",
+            labelEn: "Education"
+          }
+        ]
       },
       {
         id: "A2",
         number: 2,
-        type: "text",
+        type: "select",
         required: true,
         label: {
           yo: "Ẹ̀ka Ẹ̀kọ́",
           en: "Department"
         },
         placeholder: {
-          yo: "Àpẹẹrẹ: Ẹ̀ka Ẹ̀kọ́ Èdè Yorùbá",
-          en: "e.g. Department of Linguistics and African Languages"
-        }
+          yo: "-- Yan Ẹ̀ka Ẹ̀kọ́ --",
+          en: "-- Select Department --"
+        },
+        options: [
+          {
+            value: "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+            labelYo: "Ẹ̀ka Ẹ̀kọ́ Ìmọ̀ Èdè àti Àwọn Èdè Ilẹ̀ Adúláwọ̀",
+            labelEn: "Linguistics and African Languages"
+          },
+          {
+            value: "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ",
+            labelYo: "Ẹ̀ka Ẹ̀kọ́ Iṣẹ́-Ọ̀nà àti Ìmọ̀ Ẹ̀kọ́ Àwùjọ",
+            labelEn: "Arts and Social Sciences Education"
+          }
+        ]
       },
       {
         id: "A3",
