@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="yo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ìwé Ìbéèrè Ìwádìí AI — Yunifásítì Ọbáfẹ́mi Awólọ́wọ̀, Ilé-Ifẹ̀</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">
+        <span class="brand-badge">OAU</span>
+        <span id="brandText">Ìwé Ìbéèrè OAU</span>
+      </div>
+      <div class="topbar-controls">
+        <div class="lang-switcher" role="group" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" data-lang="yo">Yorùbá</button>
+          <button type="button" class="lang-btn" data-lang="bi">Èdè Méjì</button>
+          <button type="button" class="lang-btn" data-lang="en">English</button>
+        </div>
+        <div class="progress-pill" id="progressPill">Ìdáhùn: 0 / 38</div>
+      </div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="configNotice" class="notice-banner" style="display:none;"></div>
+
+    <section id="heroCard" class="card hero-card"></section>
+
+    <section id="scaleKeyCard" class="card scale-key-card"></section>
+
+    <form id="questionnaireForm" novalidate>
+      <div id="demographicsContainer"></div>
+      <div id="likertContainer"></div>
+      <div id="openEndedContainer"></div>
+
+      <div id="errorSummary" class="error-summary" role="alert"></div>
+
+      <div class="card">
+        <div class="actions-bar">
+          <button type="button" class="btn btn-secondary" id="clearBtn">Pa Àtúnṣe Rẹ́</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Fi Ìdáhùn Ránṣẹ́</button>
+        </div>
+      </div>
+    </form>
+
+    <section id="successPanel" class="card success-panel"></section>
+  </main>
+
+  <footer class="page-footer">
+    <div id="footerConfidential"></div>
+    <div class="footer-links">
+      <a href="report.html" id="reportLink">Ìròyìn &amp; Àbájáde (Olùwádìí)</a>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/questions.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
+
